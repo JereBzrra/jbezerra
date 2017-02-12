@@ -1,0 +1,141 @@
+{% extends "jbezerrabase.html" %}
+{% load staticfiles %}
+{% block inic %}
+{% endblock %}
+{% block content %}
+<div align="center" style="width:100%; align-items: center;  display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; margin-top:66px;">
+	<div style="width:468px; height:45px; border-bottom:#b6b6b6 2px solid; z-index:1000;">
+    	<div style="font-family:HelveticaLTStd-Bold; font-size:21px; margin-left:0px; float:left; padding-top:20px;">OBRAS</div>
+        <div style="width:266px; float:right; height:39px;">
+        	<div style="width:226px; float:left;"><input id="tx_busca" name="tx_busca" value="{{busca}}" type="text" onKeyPress="if(event.keyCode==13){$('#bt_busca').click();}"></div>
+            <div style="float:right; margin:2px 2px 0 0;"><img id="bt_busca" src="{% static 'images/lupa.jpg' %}" onClick="window.location='?q=' + $('#tx_busca').val();" style="cursor:pointer;"></div>
+        </div>
+    </div>
+</div>
+<div align="center" style="width:100%; margin-top:60px; float:left;">
+    <div class="obras" style="float:left; width:calc(100% - 153px); margin-left:76px; height:733px;">
+
+
+
+                {% for obra in obras %}
+      	<div class="box_img_ex{% if forloop.first or forloop.counter0|divisibleby:7 %} primeira {% endif %}{% if forloop.counter0 >  ultima %} ultima{% endif %}" {{obras.count}}>
+            <div class="box_img">
+                <div class="cont_img"><a class="example-image-link" href="{% static 'ordemG/' %}{{ obra.id|stringformat:"04d" }}.jpg" data-lightbox="example-set" data-title="{{ obra.id|stringformat:"04d" }}{% if obra.nome %} - {{ obra.nome }} {% endif %}{% if obra.tecnica %} - {{ obra.tecnica }} {% endif %}{% if obra.formato %} - {{ obra.formato }} {% endif %}{% if obra.ano %} - {{ obra.ano }} {% endif %}" title="{{ obra.id|stringformat:"04d" }}{% if obra.nome %} - {{ obra.nome }} {% endif %}" ><img  class="example-image" src="{% static 'ordemP/' %}{{ obra.id|stringformat:"04d" }}.jpg" alt="" border="0" autolowsrc="autolowsrc" onMouseOver="window.status=' {{ obra.id }}';return true"  /></a></div>
+                <div class="tex_img{% ifequal obra.colecao "2" %} colecao {% endifequal %}">{{ obra.id|stringformat:"04d" }}</div>
+            </div>
+        </div>
+                {% endfor %}
+    </div>
+
+    <div style="float:left; margin-top:41px; margin-bottom:10px; width:calc(100% - 153px); margin-left:76px;">
+        <div class="estilo2 paginas" style="width:{% if totalpaginas <= 6 %}calc(({{totalpaginas}} * 45px) + 60px){% elif inicio > 1 %}565px {% else %}465px{% endif %}; height:20px; {% if totalpaginas < 3 %}visibility:hidden;{% endif %}">
+            <div style="margin-left:6px;"><a class="prox" href="?{% if busca %}q={{ busca }}&{% endif %}p={{ anterior }}">&lt;</a></div>
+            
+            {% if inicio > 1 %}
+            <div><a class="prox" href="?{% if busca %}q={{ busca }}&{% endif %}p=1">1</a></div>
+            <div>...</div>
+            {% endif %}
+			
+            {% if totalpaginas > 1 and pagina <= totalpaginas %}
+                {% for i in lista %}
+            		{% if i == pagina %}
+            <div style="color:#DC1115;">{{ i }}</div>
+            		{% else %}
+            <div><a class="prox" href="?{% if busca %}q={{ busca }}&{% endif %}p={{ i }}">{{ i }}</a></div>
+            		{% endif %}
+			
+                {% endfor %}
+    		{% endif %}
+			
+            {% if fim < totalpaginas %}
+            <div>...</div>
+            <div><a class="prox" href="?{% if busca %}q={{ busca }}&{% endif %}p={{ totalpaginas }}">{{ totalpaginas }}</a></div>
+    		{% endif %}
+            <div style="padding-right:0;"><a class="prox" href="?{% if busca %}q={{ busca }}&{% endif %}p={{ proxima }}">&gt;</a></div>
+        </div>
+    </div>
+
+    
+</div>
+<table id="drag_m" style="position:absolute; display:none; background:#fff; z-index:1000;">
+	<tr>
+    	<td style="padding:0px; padding-bottom:0; border-width:0;" align="center"><img id="image_m" src="{% static 'obrasm/0002.jpg' %}" /></td>
+    </tr>
+	<tr>
+    	<td id="texto_m" style="padding:0px; font:14px HelveticaLTStd-Roman; color:#000;">0002</td>
+    </tr>
+</table>
+
+{% endblock %}
+{% block script %}
+<script src="{% static 'js/lightbox-plus-jquery.min.js' %}"></script>
+<script language="javascript">
+var vph;
+var pronto=false;
+var imagematual;      
+//$('#h_status').html($('#h_status').html() + vol + '<br />');
+$(document).ready(function() {
+	vph = $(window).height() -120;
+	vpw = $(document).width() -20;
+	var dragging = false;
+	var iX, iY;
+	var larg;
+	$('.example-image').each(function() {
+		larg=$(this).width();
+		$(this).parent().parent().parent().find('.tex_img').width(larg);
+		$(this).load(function() {
+			larg=$(this).width();
+			$(this).parent().parent().parent().find('.tex_img').width(larg);
+		});
+    });
+	$(".example-image-link").mouseover(function(e) {
+		pronto=false;
+		var link_g = $(this).attr('href');
+		var link_m = link_g.replace("ordemG", "ordemM"); 	
+		var texto_m = link_g.replace("ordemG/", ""); 	
+		var texto_m = $(this).attr('title');
+		imagematual=$(this);
+		$('#image_m').attr('src',link_m);	
+		$('#texto_m').html(texto_m).css({'width':$('#image_m').width(),'max-width':$('#image_m').width()});	
+		dragging = true;
+		iX = e.clientX;
+		iY = e.clientY;
+		this.setCapture && this.setCapture();
+		return false;
+	});
+	$('#image_m').load(function() {
+		pronto=true;
+	});
+	document.onmousemove = function(e) {
+		var xOffset=Math.max(document.documentElement.scrollLeft,document.body.scrollLeft);
+		var yOffset=Math.max(document.documentElement.scrollTop,document.body.scrollTop);
+		if (dragging) {
+			var e = e || window.event;
+			var oX = (e.clientX+xOffset) - ($('#drag_m').width()/2);
+			var oY = (e.clientY+yOffset)  - ($('#drag_m').height()+7);
+			if(oY<0){
+				oY = e.clientY  + 4;
+			}
+			if((imagematual.offset().left+imagematual.width() + $("#drag_m").width())>(vpw-120)){
+				oX = (e.clientX-imagematual.offset().left)  + ((vpw-120)-($("#drag_m").width()+imagematual.width()));
+			}
+			if(oX<0){
+				oX = e.clientX  + ((vpw-120)-(imagematual.offset().left));
+			}
+
+			if(pronto===true){
+				$("#drag_m").css({left:oX, top:oY}).show();
+			}
+			return false;
+		}else{
+			$("#drag_m").css({display:'none'});
+		}
+	};
+	$('.example-image-link').mouseout(function(e) {
+		dragging = false;
+		$("#drag_m").css({display:'none'});
+	});
+});
+</script>
+{% endblock %}
+</html>

@@ -1,0 +1,99 @@
+{% extends "jbezerrabase.html" %}
+{% load staticfiles %}
+{% block inic %}
+{% endblock %}
+{% block content %}
+<div align="center" style="width:100%; align-items: center;  display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;">
+    <div align="center" style="width:467px; height:445px; margin-top:78px;">
+        <div style="font-family:HelveticaLTStd-Bold; font-size:21px; margin-left:2px; float:left;">BIOGRAFIA</div>
+        <div style="height:1px; border-bottom:#bcbcbc 2px solid; width:100%; float:left;"></div>
+        <div style="width:100%; margin-top:13px; float:left;">
+            <img src="{% static 'images/bezerra.jpg' %}">
+        </div>
+    </div>
+</div>
+<div align="center" style="width:100%; align-items: center;  display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;">
+	<div style="width:591px; height:px; margin-top:19px; border-top:#bcbcbc 1px dotted;"></div>
+    <div style="width:591px;">
+        <div style="width:591px; height:350px; margin-top:15px; font:15.5px HelveticaLTStd-Roman; color:#000; line-height:21.5px; text-align:left;">
+            <div class="nano">
+                <div class="overthrow nano-content description" style="padding-right:61px;">
+ J. Bezerra, filho de Artur Alves Bezerra e Landelina Alves Bezerra, nasce em Carolina, Maranhão, a 8 de fevereiro de 1939<br><br>
+
+1957 - Começa a trabalhar em uma editora de livros infanto-juvenil e de histórias em quadrinhos<br><br>
+
+1960/1973 - Trabalha para várias editoras como ilustrador e desenhista de histórias em quadrinhos. Escreve (e ilustra) contos infanto-juvenil. Ilustra enciclopédias, livros didáticos, obras de autores clássicos e modernos além de obras poéticas e filosóficas. Trabalha em agências de publicidade como ilustrador, programador visual e design.<br><br>
+
+        PINTURA<br>
+        1964 - Começa a pintar influenciado por mestres europeus e chineses.<br><br>
+
+        2010 - É eleito membro da Academia Brasileira de Belas Artes.<br><br>
+
+        Atualmente realiza estudos preparatórios para pinturas de grandes dimensões. Entre estas destacam-se: “Marcha da Humanidade”, “Guerra e Paz e obras com temas bíblicos e shakespearianos.<br><br> 
+
+        A pintura de J. Bezerra na definição dos críticos de arte: "Surrealismo metafísico", "Simbolismo fantástico", "Neo-romantismo", "Simbolismo moderno" &minus; o reino intermediário entre a realidade e o sonho.<br><br>
+        
+        PRINCIPAIS EXPOSIÇÕES COLETIVAS<br>
+        1967 - I Exposição de Artes Visuais do Brasil.<br>
+        Museu de Arte Moderna (Rio).<br>
+        1977 - Galeria Maison des Artes (Rio).<br><br>
+        
+        1977 - Exposição de Artes Visuais.<br>
+        Museu de Arte de São Paulo (MASP).<br><br>
+        
+        1978 - Exposição de Artes Visuais.<br>
+        Museu de Arte de São Paulo (MASP).<br>
+        1979 - Museu Casimiro de Abreu.<br>
+        1979 - Galeria Arte Maior (Recife).<br>
+        1983 - Galeria Realidade.<br>
+        1984 - Galeria Realidade.<br>
+        1994 - Ranulpho Galeria de Arte (Recife).<br>
+        1995 - Ranulpho Galeria de Arte (Recife).<br>
+        1995 - Imagem Galeria de Arte (Rio).<br>
+        1996 - Ranulpho Galeria de Arte (Recife).<br><br>
+        
+        EXPOSIÇÕES INTERNACIONAIS<br><br>
+        
+        1980 - Alemanha - "Brasilianische Kunst"<br>
+        Realização Itamarati / Banco do Brasil - Hannover Messe'80.<br><br>
+        
+        1981 - França - "Peintres Brésiliens"<br>
+        Realização Itamarati / Banco do Brasil - Paris.<br>
+        1982 - Canadá - "Semaine de L'Art Bréilien" - Montreal.<br><br>
+        
+        1986 - França - Nouveau Salon de Paris<br>
+        Centre International D'Art Contemporain<br><br>
+        
+        EXPOSIÇOES INDIVIDUAIS<br>
+        1974 - Galeria Serrana Palace (Belo Horizonte).<br>
+        1977 - Galeria Casablanca (Rio).<br>
+        1978 - Galeria Casablanca (Rio).<br>
+        1979 - Galeria Kattya (Salvador).<br>
+        1979 - Galeria Guignard (Belo Horizonte).<br>
+        1979 - Galeria Casablanca (Rio).<br>
+        1979 - Galeria Murilo Berardo (Recife).<br>
+        1981 - Galeria Realidade (Rio).<br>
+        1982 - Galeria Kattya (Salvador).<br>
+        1982 - Galeria Realidade (Rio).<br>
+        1985 - Galeria Olívia Kann (Rio).<br>
+        1988 - Galeria Borghese (Rio).<br>
+        1991 - Galeria Borghese (Rio).<br>
+        1994 - Galeria Borghese (Rio).<br>
+        2008 - Galeria Realidade (Rio).<br><br>
+        
+        Possui obras em coleções públicas e particulares no Brasil, Estados Unidos, Canadá, diversos países da Europa e Oriente.
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+<script language="JavaScript">
+$(document).ready(function(){
+	$(".nano").nanoScroller();
+});
+</script>
+{% endblock %}
+</html>

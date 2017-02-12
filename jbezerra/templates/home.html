@@ -1,0 +1,166 @@
+{% extends "jbezerrabase.html" %}
+{% load staticfiles %}
+{% block inic %}
+{% endblock %}
+{% block content %}
+<script>
+var a=2;
+var w=2;
+$(document).ready(function(){
+	resizeDiv();
+});
+
+window.onresize = function(event) {
+	resizeDiv();
+}
+
+function resizeDiv() {
+	vpw = $(document).width();
+	vph = $(document).height();
+	$('.nano').nanoScroller({
+		preventPageScrolling: true
+	});
+	$(".nano").nanoScroller();
+}
+</script>
+<div style="width:100%; height:792px; float:left;">
+    <div style="width:597px; height:515px; float:left; margin-top:21px; margin-left:-7px;">
+        
+        <div style="width:513px; height:89px; float:left; margin-left:41px; margin-top:0px;">
+            <div style="width:89px; height:89px; float:left; padding-right:8px; border-right:#b6b6b6 1px dotted;"></div>
+            <div style="width:89px; height:89px; float:left; padding:0 8px 0 8px; border-right:#b6b6b6 1px dotted;"></div>
+            <div style="width:89px; height:89px; float:left; padding:0 8px 0 8px; border-right:#b6b6b6 1px dotted;"></div>
+            <div style="width:89px; height:89px; float:left; padding:0 8px 0 8px; border-right:#b6b6b6 1px dotted;"></div>
+            <div style="width:89px; height:89px; float:left; padding:0 0 0 8px;"></div>
+        </div>
+        
+        <div style="width:570px; height:19px; float:left; margin-left:7px; border-bottom:#bcbcbc 2px solid;"></div>
+        
+        <div style="width:590px; height:18px; float:left;"></div>
+    
+    
+	 
+
+	    <div id="jssor_1" style="position: relative; margin: 0 auto; top: -128px; left: 0px; width: 516px; height: 770px; overflow: hidden;">
+	        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 512px; height: 640px; overflow: hidden; margin-top:128px;">
+	            
+                {% for slide in slides %}
+	            <div style="display: none;">
+	                <div data-u="thumb">
+	                    <img src="{% static 'slide/mini/' %}{{ slide.id|stringformat:"04d" }}.jpg" />
+	                </div>
+	                <div style="height:640px; width:512px; overflow:hidden; /*align-items: center; display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;*/">
+	                    <a class="example-image-link" href="{% static 'ordemG/' %}{{ slide.id|stringformat:"04d" }}.jpg" data-lightbox="example-set" data-title="{{ slide.id|stringformat:"04d" }}{% if slide.nome %} - {{ slide.nome }} {% endif %}{% if slide.tecnica %} - {{ slide.tecnica }} {% endif %}{% if slide.formato %} - {{ slide.formato }} {% endif %}{% if slide.ano %} - {{ slide.ano }} {% endif %}" title="{{ slide.id|stringformat:"04d" }}{% if slide.nome %} - {{ slide.nome }} {% endif %}" ><img src="{% static 'slide/' %}{{ slide.id|stringformat:"04d" }}.jpg" width="512"/></a>
+	                </div>
+	                
+	            </div>
+                {% endfor %}
+
+	        </div>
+	        <!-- Thumbnail Navigator -->
+	        <div data-u="thumbnavigator" class="jssort16" style="position:absolute;left:0px;top:0px;width:89px;height:89px; margin-left:0px;" data-autocenter="1">
+	            <!-- Thumbnail Item Skin Begin -->
+	            <div data-u="slides" style="cursor: default;">
+	                <div data-u="prototype" class="p">
+	                    <div data-u="thumbnailtemplate" class="t"></div>
+	                </div>
+	            </div>
+	            <!-- Thumbnail Item Skin End -->
+	        </div>
+	        <!-- Bullet Navigator -->
+	    </div>
+   
+    </div>
+    <div style="width:1px; height:663px; margin-top:130px; float:left; border-left:#bcbcbc 2px dotted;"></div>
+    <div style="width:472px; height:515px; float:right; margin-top:115px;">
+        <div style="width:457px; height:14px; float:right; border-bottom:#bcbcbc 2px solid;"></div>
+        
+        <div style="width:470px; height:14px; float:left;"></div>
+        <div align="center" style="width:454px; margin:22px 0 0 17px; float:left;"><img src="{% static 'images/livro.png' %}" width="342"></div>
+        <div class="estilo1" style="width:382px; float:left; margin:20px 0 0 65px;">Livro "J. Bezerra", em edição de luxo, contendo mais de trezentas reproduções a cores, abrange toda a trajetória do pintor, em seus 44 anos de vida artística, e conta ainda com depoimentos de expressivas personalidades do meio artístico e intelectual.
+        </div>
+    </div>
+</div>
+<div style="width:100%; height:19px; position:absolute; left:0; margin-top:792px; border-bottom:#bcbcbc 2px solid;">&nbsp;</div>
+<div style="width:100%; float:left; margin-top:34px;">
+    <div style="width:483px; float:left; margin-left:34px; border-right:#bcbcbc 2px dotted;">
+        <div style="width:227px; float:left;"><img src="{% static 'images/bentoebezerra.jpg' %}" width="227" onClick="jssor_slider1.child.$Play(3);">
+        	
+        </div>
+        <div style="width:201px; float:left; margin-left:8px; margin-top:260px; font:10.5px HelveticaLTStd-Roman; font-weight:500; color:#000; bottom:2px; line-height:14px;">O crítico Antônio Bento com J. Bezerra, por ocasião de uma exposição do artista na Galeria de Arte Realidade</div>
+    </div>
+  <div style="width:545px; float:left;">
+    	<div style="width:477px; float:left; margin:6px 0 0 39px; height:301px; font:14px HelveticaLTStd-Roman; font-weight:500; color:#000; line-height:18px;">
+            <div class="nano">
+                <div class="overthrow nano-content description" style="padding-right:12px;">
+<span style="font-family:HelveticaLTStd-Bold;">Antônio Bento</span><br>
+TEMPO E MEMÓRIA NA PINTURA DE J. BEZERRA<br><br>
+
+Num texto do próprio J. Bezerra, constante do catálogo de sua exposição de 1977, aqui mesmo, na galeria "Casablanca", encontra-se uma deixa valiosa para o entendimento de um dos significados mais relevantes de sua pintura. Foi a citação de uma frase de Paul Klee, por ele considerado o maior poeta entre os demais pintores: "Toda arte é memória de tempos mais antigos, cujos fragmentos sobrevivem no artista".<br><br>
+
+A afirmativa deste grande criador de formas, igualmente um pensador como o seu amigo Kandinsky, demiurgo da arte abstrata neste século, explica um dos aspectos mais importantes da elaboração dos quadros do expositor. Sua pintura decorre de imposições variadas, vindas por igual do espírito e do sonho, da realidade e da fantasia. Deste dualismo entre o conceito e a emoção nascem suas obras. Nestas estão intercaladas visões diversas, umas provenientes da natureza e outras surgidas do inconsciente, de papel tão vasto nas artes visuais de nosso tempo. Esta dicotomia ou este choque entre o lógico e o ilógico fecunda o trabalho de J. Bezerra. E gera ambigüidades curiosas, no curso das quais as visões fixadas na tela sofrem distorções temporais, que inferem na memória do artista. Sob este aspecto, são ricos de implicações os seus quadros, sempre ligados à figura humana. Sobretudo no que diz respeito às mutações da memória, faculdade tão sujeita a incertezas e tocada pelo mistério de interferências imprevisíveis, aleatórias e aparentemente incompreensíveis. Não raro, parece que a memória é mutável como o tempo e participa de seu curso instável, relativo e imprevisto. Na verdade, o tempo varia com as emoções e obedece às incidências da subjetividade humana.<br><br>
+
+A estes e outros devaneios nos levam o trabalho de J. Bezerra, pintor sério, íntegro, que procura sobretudo encontrar o seu próprio caminho, entre sonhos, pensamentos e quimeras, num mundo áspero, hostil e trágico, como este em que nos encontramos.<br><br>
+
+Mas, além de suas especulações temporais, existem outros problemas na arte deste maranhense inquieto, que especula com o tempo, os símbolos do inconsciente e a vida em si mesma.<br><br>
+
+Se é certo – como o próprio artista o confessa – que tudo em sua "pintura é simbólico", a memória exerce naturalmente um papel importante em suas criações. Liga-se inclusive às propriedades simbólicas que ele também atribui às cores. E isto é muito importante, por sua vez, em pinturas figurativas, nas quais é raro que o artista tenha esta espécie de preocupação.<br><br>
+
+São na realidade os pintores abstratos, desde os primitivos até Kandinsky e o nosso Israel Pedrosa, aqueles que procuram os significados simbólicos da cor.<br><br>
+
+Este me parece um dos aspectos importantes do cromatismo de J. Bezerra, em cuja pintura tudo é detidamente pensado, tanto no plano da razão como no do inconsciente, onde germinam secretamente as sementes das obras de arte.<br><br>
+
+Tendo se iniciado como desenhista, o desenho de pintor apurou-se naturalmente com o tempo. Tornou-se preciso e refinado, dando um sólido apoio às estruturas, resultantes de visões subjacentes ou provindas de uma incubação misteriosa, que parece ter se originado de outras gerações, de outras vidas ou de outros tempos, segundo a sugestão de Klee.<br><br>
+
+Pertencem a esta tendência meio fantástica os quadros desta mostra que J. Bezerra intitulou de "Fragmentos da memória".<br><br>
+
+Não deixa de ser curioso o fato de J. Bezerra declarar que faz invariavelmente uma narrativa em cada uma de suas obras. Esta narrativa evidentemente não é igual à da arte tradicional. Nem muito menos à da história em quadrinhos. Às vezes é hermética, pois os significados dos símbolos, mesmo os que se expressam através de figuras ou sinais, não são acessíveis a todos. É o que acontece com a maioria de seus quadros, tanto nos diálogos figurativos como no apelo à linguagem simbólica. Cada um que procure a cifra visual, carregada de subjetividade, a que recorreu o pintor, em sua especulação humanista ou em seu jogo formal, disposto no espaço.<br><br>
+
+A forma aparece sempre elaborada nas obras do artista. Alguns de seus perfis são de uma pureza linear rara em nossa pintura atual. Isso aumenta o seu valor artístico e estético, que se enobrece pela beleza do traço.<br><br>
+
+J. Bezerra firma-se realmente como um dos valores refinados da jovem pintura brasileira. Foi essa a conclusão a que cheguei, depois de conversar com ele e de ver vários de seus quadros.<br>
+Apresentação de catálogo, Rio de Janeiro, julho de 1978
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+    {% block script %}
+<link rel="stylesheet" href="{% static 'css/lightbox.css' %}" type="text/css" media="screen" />
+<script src="{% static 'js/lightbox-plus-jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery-1.10.2.min.js' %}"></script>
+<script>
+var vph;
+$(document).ready(function() {
+	vph = $(window).height() -120;
+	vpw = $(document).width() -20;
+        jssor_1_slider_init();
+});
+
+
+	jssor_1_slider_init = function() {
+		
+		var jssor_1_options = {
+		  $AutoPlay: true,
+		  $StartIndex:1,
+		  $BulletNavigatorOptions: {
+			$Class: $JssorBulletNavigator$
+		  },
+		  $ThumbnailNavigatorOptions: {
+			$Class: $JssorThumbnailNavigator$,
+			$Cols: 5,
+			$Align: 219
+		  }
+		};
+		
+		var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+	};
+</script>
+
+    {% endblock %}
+
+</body>
+</html>

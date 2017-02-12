@@ -1,0 +1,47 @@
+{% extends "jbezerrabase.html" %}
+{% load staticfiles %}
+    {% block inic %}
+	<div style="width:calc(50% + 150px); min-width:590px; height:19px; position:absolute; left:0; margin-top:277px; border-bottom:#999999 4px solid; z-index:-2;">&nbsp;</div>
+    <a href="home/"><img name="imagini" id="imagini" src="{% static 'images/loading.gif' %}" border="0" title="Clique para entrar" /></a>
+    {% endblock %}
+    {% block inich %}{% endblock %}
+    {% block assin %}
+    {% endblock %}
+    {% block fimh %}{% endblock %}
+    {% block inicsoc %}
+    <div id="sociaisindex">
+        <a href="contato/"><div id="email"></div></a>
+        <a><div id="insta"></div></a>
+        <a><div id="dois"></div></a>
+        <a><div id="you"></div></a>
+        <a href="https://twitter.com/JBezerra1939" target="_blank"><div id="twi"></div></a>
+        <a href="https://www.facebook.com/j.bezerra.arte" target="_blank"><div id="face"></div></a>
+    </div>
+    {% endblock %}
+    {% block navbarra %}{% endblock %}
+    {% block content %}{% endblock %}
+	{% block rodape %}{% endblock %}
+   {% block script %}
+<script type="text/javascript">
+var carregar;
+var altura=$(window).height();
+function abrePagina(){
+	$('#tb_prim').height(altura);
+	carregar = new Image();
+	carregar.src = "{% static 'images/abertura.png' %}";
+	setTimeout( "verificaCarregamento()", 100 );
+}
+
+function verificaCarregamento(){
+	if( carregar.complete){
+		document.images.imagini.src = "{% static 'images/abertura.png' %}";
+	}else{
+		setTimeout( "verificaCarregamento()", 100);
+	}
+}
+
+var imagem = new Image();
+imagem.src = "{% static 'images/loading.gif' %}";
+
+</script>
+    {% endblock %}

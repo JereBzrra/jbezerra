@@ -1,0 +1,81 @@
+{% extends "jbezerrabase.html" %}
+{% load staticfiles %}
+{% block inic %}
+{% endblock %}
+{% block content %}
+
+<div align="center" style="width:100%; align-items: center; margin-top:66px;">
+	<div style="width:468px; float:left; margin-left:298px; height:45px; border-bottom:#b6b6b6 2px solid;">
+    	<div style="font-family:HelveticaLTStd-Bold; font-size:21px; margin-left:0px; float:left; padding-top:20px;">FORTUNA CR&Iacute;TICA</div>
+    </div>
+</div>
+<div align="center" style="width:100%; margin-top:17px; float:left;">
+	<div style="float:left; width:283px; height:851px;">
+        <div style="float:left; width:229px; margin-top:48px; margin-left:37px; border-right:#b6b6b6 2px solid; font:16px HelveticaLTStd-Roman; color:#000; text-align:left; height:831px;">
+        	{% for dbcritico in criticos %}
+        	<div style="{% if forloop.first %}margin-top:-8px; {% endif %}height:39px; width:227px;"><a class="cr" href="#{{ dbcritico.link_critico }}" param="{{ dbcritico.exibe_menu }}">{{ dbcritico.critico }}</a></div>
+        	{% endfor %}
+        </div>
+    </div>
+    <div style="float:left; width:694px; height:851px; margin-top:37px; margin-bottom:10px;">
+        <div class="nano">
+            <div class="overthrow nano-content description" style="padding-right:30px;">
+{% for dbcritica in criticas %}
+	{% if dbcritica.exibe_critico %}
+	<a id="{{ dbcritica.link_critico }}" NAME="#{{ dbcritica.link_critico }}">
+	<div class="titi_crito">{{ dbcritica.critico }}<br></div>
+	</a>
+	{% endif %}
+		{% if dbcritica.titulo %}
+	<div class="titi_crit">{{ dbcritica.titulo }}<br></div>
+		{% endif %}
+	<div class="cont_crit{% ifnotequal dbcritica.critico "Bibliografia" %} criticos{% endifnotequal %}"><p class="{% ifequal dbcritica.critico "Bibliografia" %} bibliografia{% endifequal %}">
+	{{ dbcritica.critica|safe }}
+	</p></div>
+	{% if dbcritica.fonte %}
+	<div class="fonte_crit" style="padding:0 4px 40px 4px;">{{ dbcritica.fonte }}<br></div>
+		{% else %}
+	<div class="fonte_crit" ><br></div>
+		{% endif %}
+{% endfor %}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+{% block script %}
+<script language="JavaScript">
+var a = 2;
+var n_href;
+var atual = "AntonioBento1";
+$(document).ready(function(){
+	$('.nano').nanoScroller({
+		preventPageScrolling: true
+	});
+	$('.cr').mouseover(function(e){
+		if($(this).attr('param')>1 && atual == $(this).attr('href')){
+			n_href = $(this).attr('href').substr(0,$(this).attr('href').length-1) + a;
+			max_a = $(this).attr('param')
+			$(this).attr('href',n_href); 
+			a++; a=(a>max_a)?1:a;
+		}
+		if($(this).attr('param')==1){
+			a = 1;
+		}
+		atual = $(this).attr('href');
+	});
+	$('.cr').click(function(e){
+		if($(this).attr('param')>1){
+			n_href = $(this).attr('href').substr(0,$(this).attr('href').length-1) + a;
+			max_a = $(this).attr('param')
+			$(this).attr('href',n_href); 
+			a++; a=(a>max_a)?1:a;
+		}
+		atual = $(this).attr('href');
+	});
+});
+</script>
+{% endblock %}
+</html>
